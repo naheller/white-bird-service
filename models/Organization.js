@@ -6,37 +6,48 @@ const Schema = mongoose.Schema
 const OrganizationSchema = new Schema(
   {
     Category: {
-      type: String
+      type: String,
+      default: ''
     },
     Sub_category: {
-      type: String
+      type: String,
+      default: ''
     },
     Service_name: {
-      type: String
+      type: String,
+      required: true
     },
     Main_Phone: {
-      type: String
+      type: String,
+      default: ''
     },
     Web_Address: {
-      type: String
+      type: String,
+      default: ''
     },
     Hours_of_Operation: {
-      type: String
+      type: String,
+      default: ''
     },
     Physical_Site_Address_1: {
-      type: String
+      type: String,
+      default: ''
     },
     Email: {
-      type: String
+      type: String,
+      default: ''
     },
     Description_of_Service: {
-      type: String
+      type: String,
+      default: ''
     },
     ADA_Access: {
-      type: String
+      type: String,
+      default: ''
     },
     Languages_Spoken: {
-      type: String
+      type: String,
+      default: ''
     }
   },
   { timestamps: true }

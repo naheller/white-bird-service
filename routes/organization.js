@@ -1,15 +1,32 @@
-const express = require('express')
-const router = express.Router()
-const Organization = require('../models/Organization')
+const express = require("express");
+const router = express.Router();
+const Organization = require("../models/Organization");
 
-router.get('/', (req, res) => {
-  console.log('FIND ORGS')
+router.get("/", (_, res) => {
   Organization.find({})
     .then(orgs => {
-      console.log('orgs', orgs)
-      return res.status(200).json(orgs)
+      return res.status(200).json(orgs);
     })
-    .catch(err => console.log('Error finding organizations:', err))
-})
+    .catch(err => console.log("Error finding organizations:", err));
+});
 
-module.exports = router
+router.get("/:id", (req, res) => {
+  Organization.findOne({ _id: req.params.id }).then(org =>
+    res.status(200).json(org)
+  );
+});
+
+router.put("/:id", (req, res) => {
+  Organization.findOneAndUpdate(
+    { _id: req.params.id },
+    { $set: req.body },
+    { new: true, runValidators: true }
+  )
+    .then(updatedOrg => res.status(200).json(updatedOrg))
+    .catch(err => {
+      const isValidationError = err.name === "ValidationError";
+      return res.status(isValidationError ? 400 : 500).json(err);
+    });
+});
+
+module.exports = router;
