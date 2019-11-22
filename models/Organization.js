@@ -1,58 +1,58 @@
-const mongoose = require("mongoose");
-mongoose.set("useFindAndModify", false);
+const mongoose = require('mongoose')
+mongoose.set('useFindAndModify', false)
 
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
 const OrganizationSchema = new Schema(
   {
     Category: {
       type: String,
-      default: ""
+      default: ''
     },
-    Sub_category: {
+    Subcategory: {
       type: String,
-      default: ""
+      default: ''
     },
     Service_Name: {
       type: String,
       required: true
     },
-    Main_Phone: {
+    Phone_Number: {
       type: String,
-      default: ""
+      default: ''
     },
     Web_Address: {
       type: String,
-      default: ""
+      default: ''
     },
     Hours_of_Operation: {
       type: String,
-      default: ""
+      default: ''
     },
-    Physical_Site_Address_1: {
+    Physical_Address: {
       type: String,
-      default: ""
+      default: ''
     },
-    Email: {
+    Email_Address: {
       type: String,
-      default: ""
+      default: ''
     },
-    Description_of_Service: {
+    Description: {
       type: String,
-      default: ""
+      default: ''
     },
-    ADA_Access: {
+    Wheelchair_Access: {
       type: String,
-      default: ""
+      default: ''
     },
-    Languages_Spoken: {
+    Language_Help: {
       type: String,
-      default: ""
+      default: ''
     }
   },
   { timestamps: true }
-);
+)
 
-const Organization = mongoose.model("organizations", OrganizationSchema);
+const Organization = mongoose.model('organizations', OrganizationSchema)
 
-module.exports = Organization;
+module.exports = Organization
